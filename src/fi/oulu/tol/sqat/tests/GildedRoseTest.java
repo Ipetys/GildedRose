@@ -36,7 +36,26 @@ public class GildedRoseTest {
 	}
     
 	@Test
-	public void testUpdateEndOfDay() {
-		fail("Test not implemented");
+	public void testUpdateEndOfDay_Sulfuras_Quality_80() {
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Sulfuras, Hand of Ragnaros",0, 80));
+		
+		store.updateEndOfDay();
+		
+		List<Item> items = store.getItems();
+		Item itemSulfuras = items.get(0);
+		assertEquals("Sulfuras quality should be always 80!", 80, itemSulfuras.getQuality());				
+	}
+
+	@Test
+	public void testUpdateEndOfDay_Elixir_of_the_Mongoose() {
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Elixir of the Mongoose", 5, 7));
+		
+		store.updateEndOfDay();
+		
+		List<Item> items = store.getItems();
+		Item itemElixir = items.get(0);
+		assertEquals("Quality of Elixir of the Mongoose", 6, itemElixir.getQuality());				
 	}
 }
